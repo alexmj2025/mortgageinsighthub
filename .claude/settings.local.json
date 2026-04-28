@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(grep -v \"^$\")",
+      "Bash(open http://localhost:3001)"
+    ]
+  }
+}

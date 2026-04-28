@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #1a56db;
+    --primary-dark: #1e429f;
+    --accent-green: #16a34a;
+    --accent-red: #dc2626;
+    --background: #f8fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --foreground: #0f172a;
+    --secondary: #475569;
+    --muted: #f1f5f9;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hero-number {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--primary);
+  }
+
+  @media (max-width: 768px) {
+    .hero-number {
+      font-size: 36px;
+    }
+  }
+}
+
+/* Print styles for PDF export */
+@media print {
+  header, nav, footer,
+  .no-print, .ad-slot, .affiliate-cta,
+  .share-button, .export-button {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .print-section {
+    break-inside: avoid;
+  }
+}
