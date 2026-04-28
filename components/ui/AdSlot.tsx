@@ -1,20 +1,17 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
-// Publisher ID — already added to layout.tsx head
 const PUBLISHER_ID = 'ca-pub-8870870806520160'
 
-// ─── FILL THESE IN from AdSense dashboard → Ads → By ad unit → Display ads ───
-// Create one ad unit per format, copy the data-ad-slot number here.
+// Add slot IDs here as you create them in AdSense → Ads → By ad unit → Display ads
 const SLOT_IDS: Record<string, string> = {
-  leaderboard:    'XXXXXXXXXX', // 728×90  — leaderboard
-  'mobile-banner':'XXXXXXXXXX', // 320×50  — mobile banner
-  rectangle:      'XXXXXXXXXX', // 336×280 — rectangle
-  responsive:     'XXXXXXXXXX', // responsive
-  footer:         'XXXXXXXXXX', // 728×90  — footer
+  leaderboard:     '4012551750', // 728×90  ✓
+  'mobile-banner': 'XXXXXXXXXX', // 320×50  — create in AdSense
+  rectangle:       'XXXXXXXXXX', // 336×280 — create in AdSense
+  responsive:      'XXXXXXXXXX', // auto    — create in AdSense
+  footer:          'XXXXXXXXXX', // 728×90  — create in AdSense
 }
-// ──────────────────────────────────────────────────────────────────────────────
 
 interface AdSlotProps {
   slot: keyof typeof SLOT_IDS
@@ -22,34 +19,30 @@ interface AdSlotProps {
 }
 
 const SLOT_DIMENSIONS: Record<string, { width: number; height: number }> = {
-  leaderboard:    { width: 728, height: 90 },
-  'mobile-banner':{ width: 320, height: 50 },
-  rectangle:      { width: 336, height: 280 },
-  responsive:     { width: 0,   height: 90 },
-  footer:         { width: 728, height: 90 },
+  leaderboard:     { width: 728, height: 90 },
+  'mobile-banner': { width: 320, height: 50 },
+  rectangle:       { width: 336, height: 280 },
+  responsive:      { width: 0,   height: 90 },
+  footer:          { width: 728, height: 90 },
 }
 
-// Are the real slot IDs filled in yet?
-const ADSENSE_READY = Object.values(SLOT_IDS).every((id) => id !== 'XXXXXXXXXX')
-
 export function AdSlot({ slot, className = '' }: AdSlotProps) {
-  const insRef = useRef<HTMLModElement>(null)
   const dims = SLOT_DIMENSIONS[slot]
   const slotId = SLOT_IDS[slot]
+  const isReady = slotId !== 'XXXXXXXXXX'
   const isResponsive = dims.width === 0
 
   useEffect(() => {
-    if (!ADSENSE_READY) return
+    if (!isReady) return
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
     } catch {
-      // adsbygoogle not loaded yet — safe to ignore
+      // safe to ignore
     }
-  }, [])
+  }, [isReady])
 
-  // Show placeholder until AdSense is approved + slot IDs are filled in
-  if (!ADSENSE_READY) {
+  if (!isReady) {
     return (
       <div
         className={`ad-slot flex items-center justify-center bg-muted border border-dashed border-border rounded text-xs text-secondary ${className}`}
@@ -80,19 +73,12 @@ export function AdSlot({ slot, className = '' }: AdSlotProps) {
       }}
     >
       <ins
-        ref={insRef}
         className="adsbygoogle"
-        style={{
-          display: 'block',
-          width: isResponsive ? '100%' : dims.width,
-          height: dims.height,
-        }}
+        style={{ display: 'block' }}
         data-ad-client={PUBLISHER_ID}
         data-ad-slot={slotId}
-        {...(isResponsive && {
-          'data-ad-format': 'auto',
-          'data-full-width-responsive': 'true',
-        })}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
       />
     </div>
   )
