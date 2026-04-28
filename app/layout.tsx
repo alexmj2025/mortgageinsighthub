@@ -93,6 +93,12 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        {/* AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8870870806520160"
+          crossOrigin="anonymous"
+        />
         {/* GA4 */}
         <script
           async
