@@ -7,7 +7,7 @@ const PUBLISHER_ID = 'ca-pub-8870870806520160'
 // Add slot IDs here as you create them in AdSense → Ads → By ad unit → Display ads
 const SLOT_IDS: Record<string, string> = {
   leaderboard:     '4012551750', // 728×90  ✓
-  'mobile-banner': 'XXXXXXXXXX', // 320×50  — create in AdSense
+  'mobile-banner': '2874729905', // 320×50  ✓
   rectangle:       'XXXXXXXXXX', // 336×280 — create in AdSense
   responsive:      'XXXXXXXXXX', // auto    — create in AdSense
   footer:          'XXXXXXXXXX', // 728×90  — create in AdSense
