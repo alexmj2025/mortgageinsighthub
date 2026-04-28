@@ -35,8 +35,10 @@ export function AdSlot({ slot, className = '' }: AdSlotProps) {
   useEffect(() => {
     if (!isReady) return
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
+      // eslint-disable-next-line
+      ;(window as any).adsbygoogle = (window as any).adsbygoogle || []
+      // eslint-disable-next-line
+      ;(window as any).adsbygoogle.push({})
     } catch {
       // safe to ignore
     }

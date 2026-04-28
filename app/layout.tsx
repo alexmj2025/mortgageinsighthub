@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -94,27 +95,25 @@ export default function RootLayout({
         </main>
         <Footer />
         {/* AdSense */}
-        <script
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8870870806520160"
           crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
         {/* GA4 */}
-        <script
-          async
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-WRWFJ263L2"
+          strategy="afterInteractive"
         />
-        <script
-          id="ga4-init"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-WRWFJ263L2');
-            `,
-          }}
-        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WRWFJ263L2');
+          `}
+        </Script>
       </body>
     </html>
   )
