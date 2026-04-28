@@ -93,10 +93,10 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        {/* GA4 — defer to never block render */}
+        {/* GA4 */}
         <script
-          defer
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-WRWFJ263L2"
         />
         <script
           id="ga4-init"
@@ -105,7 +105,7 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+              gtag('config', 'G-WRWFJ263L2');
             `,
           }}
         />
