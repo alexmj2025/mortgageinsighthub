@@ -8,9 +8,9 @@ const PUBLISHER_ID = 'ca-pub-8870870806520160'
 const SLOT_IDS: Record<string, string> = {
   leaderboard:     '4012551750', // 728×90  ✓
   'mobile-banner': '2874729905', // 320×50  ✓
-  rectangle:       'XXXXXXXXXX', // 336×280 — create in AdSense
-  responsive:      'XXXXXXXXXX', // auto    — create in AdSense
-  footer:          'XXXXXXXXXX', // 728×90  — create in AdSense
+  rectangle:       '5277217333', // 336×280 ✓
+  responsive:      '4267387991', // auto    ✓
+  footer:          '9855071224', // 728×90  ✓
 }
 
 interface AdSlotProps {
