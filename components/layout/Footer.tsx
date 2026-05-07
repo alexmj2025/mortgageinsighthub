@@ -14,6 +14,8 @@ const calculatorLinks = [
 ]
 
 const infoLinks = [
+  { href: '/about', label: 'About Us' },
+  { href: '/contact', label: 'Contact' },
   { href: '/faq', label: 'FAQ' },
   { href: '/how-it-works', label: 'How It Works' },
   { href: '/privacy', label: 'Privacy Policy' },
@@ -76,16 +78,12 @@ export function Footer() {
           <p className="text-xs text-secondary">
             © {new Date().getFullYear()} MortgageInsightHub.com — Free Mortgage &amp; Loan Calculators
           </p>
-          <div className="flex items-center gap-4">
-            <Link href="/privacy" className="text-xs text-secondary hover:text-primary">
-              Privacy Policy
-            </Link>
-            <Link href="/how-it-works" className="text-xs text-secondary hover:text-primary">
-              How It Works
-            </Link>
-            <Link href="/faq" className="text-xs text-secondary hover:text-primary">
-              FAQ
-            </Link>
+          <div className="flex items-center gap-4 flex-wrap justify-center md:justify-end">
+            <Link href="/about" className="text-xs text-secondary hover:text-primary">About</Link>
+            <Link href="/contact" className="text-xs text-secondary hover:text-primary">Contact</Link>
+            <Link href="/privacy" className="text-xs text-secondary hover:text-primary">Privacy Policy</Link>
+            <Link href="/how-it-works" className="text-xs text-secondary hover:text-primary">How It Works</Link>
+            <Link href="/faq" className="text-xs text-secondary hover:text-primary">FAQ</Link>
           </div>
         </div>
       </div>

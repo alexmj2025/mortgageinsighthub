@@ -16,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/mortgage-refinance-calculator`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.80 },
     { url: `${BASE_URL}/amortization-schedule`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.80 },
     { url: `${BASE_URL}/faq`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.75 },
+    { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.65 },
+    { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.55 },
     { url: `${BASE_URL}/how-it-works`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.60 },
     { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.30 },
   ]

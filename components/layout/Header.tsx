@@ -12,6 +12,11 @@ const navLinks = [
   { href: '/mortgage-calculator-uk', label: 'UK' },
 ]
 
+const secondaryLinks = [
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+]
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -30,6 +35,16 @@ export function Header() {
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-6" aria-label="Main navigation">
           {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-secondary hover:text-primary transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <span className="h-4 w-px bg-border" aria-hidden="true" />
+          {secondaryLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -59,17 +74,29 @@ export function Header() {
           className="lg:hidden border-t border-border bg-white"
           aria-label="Mobile navigation"
         >
-          <div className="max-w-site mx-auto px-6 py-4 flex flex-col gap-3">
+          <div className="max-w-site mx-auto px-6 py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-secondary hover:text-primary py-2 border-b border-border last:border-0"
+                className="text-sm font-medium text-secondary hover:text-primary py-2.5 border-b border-border"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
+            <div className="pt-2 pb-1">
+              {secondaryLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block text-sm font-medium text-secondary hover:text-primary py-2.5 border-b border-border last:border-0"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </nav>
       )}
